@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  gdrl:
+    image: mimoralea/gdrl:v0.14
+
+    container_name: gdrl
+
+    volumes:
+      - ./notebooks:/mnt/notebooks
+
+    ports:
+      - '8888:8888'
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
